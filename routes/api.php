@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:api')->resource('galleries', 'API\GalleryController')->only([
+    'index', 'show'
+]);
+
+Route::post('/register', 'API\AuthController@register')->name('api.register');
+Route::post('/login', 'API\AuthController@login')->name('api.login');

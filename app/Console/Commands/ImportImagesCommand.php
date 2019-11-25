@@ -8,6 +8,7 @@ use Goutte\Client;
 use GuzzleHttp\Client as GuzzleClient;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Symfony\Component\DomCrawler\Crawler;
@@ -175,7 +176,7 @@ class ImportImagesCommand extends Command
             $this->line('Start removing old galleries.');
             $bar = $this->output->createProgressBar(count($galleries));
             foreach ($galleries as $gallery) {
-                Storage::deleteDirectory('gallery/'.$gallery['name']);
+                File::deleteDirectory(storage_path('app/public/galleries/').$gallery['name']);
                 $g = Gallery::find($gallery['id']);
                 $g->delete();
                 $bar->advance();

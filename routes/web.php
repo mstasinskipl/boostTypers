@@ -13,3 +13,5 @@
 
 Route::get('/', 'GalleryController@showGalleries')->name('home');
 Route::get('/image/{idGallery}', 'GalleryController@showImage')->name('images');
+
+//Route::auth();
