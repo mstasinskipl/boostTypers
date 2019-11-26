@@ -17,7 +17,8 @@ User register & login
     
 Galleries:
 1. To start import galleries use this command: `php artisan galleries:import`
-2. Remember if you want to have access to galleries by API you should use header like:
+2. After imported galleries hou should link storage path to public path by command `php artisan storage:link`
+3. Remember if you want to have access to galleries by API you should use header like:
     
     <ul>
     <li>
